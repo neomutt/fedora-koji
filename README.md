@@ -1,0 +1,3 @@
+# neomutt
+
+The neomutt package

@@ -1,7 +1,7 @@
 Summary: Text mode Mail Client
 Name: neomutt
 Version: 20220629
-Release: 1%{?dist}
+Release: 2%{?dist}
 Epoch: 5
 Url: https://neomutt.org/
 
@@ -77,6 +77,9 @@ cat %{SOURCE1} >> %{buildroot}%{_sysconfdir}/neomuttrc
 %{_datadir}/neomutt
 
 %changelog
+* Fri Jul 22 2022 Fedora Release Engineering <releng@fedoraproject.org> - 5:20220629-2
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_37_Mass_Rebuild
+
 * Wed Jun 29 2022 Richard Russon <rich@flatcap.org> - 20220629-1
 - Testing
 

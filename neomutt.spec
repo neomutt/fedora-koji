@@ -38,7 +38,7 @@ searches and a powerful pattern matching language for selecting groups of
 messages.
 
 %prep
-%setup -q -n %{name}-%{commit}
+%setup -q -n %{name}-%{version}
 %patch1 -p1 -b .system_certs
 %patch2 -p1 -b .ssl_ciphers
 
@@ -77,7 +77,7 @@ cat %{SOURCE1} >> %{buildroot}%{_sysconfdir}/neomuttrc
 %{_datadir}/neomutt
 
 %changelog
-* Wed Mar 22 2023 Richard Russon <rich@flatcap.org> - NeoMutt-20230322
+* Wed Mar 22 2023 Richard Russon <rich@flatcap.org> - 20230322-1
 - Features
   - #3372 - use DT_SLIST for charset variables
   - #3383 - support viewing html with embedded images, #3383
@@ -937,7 +937,7 @@ cat %{SOURCE1} >> %{buildroot}%{_sysconfdir}/neomuttrc
   - tests: fix test that would fail soon
   - tests: fix context for failing idna tests
 
-* Mon Nov 11 2019 Richard Russon <rich@flatcap.org> - NeoMutt-2019-11-11
+* Mon Nov 11 2019 Richard Russon <rich@flatcap.org> - 2019-1-11-11
 - Features
   - 'sidebar_unread' color
 - Bug Fixes
@@ -958,7 +958,7 @@ cat %{SOURCE1} >> %{buildroot}%{_sysconfdir}/neomuttrc
   - fix icommand parsing
   - fix new mail interaction with mail_check_recent
 
-* Sat Nov 02 2019 Richard Russon <rich@flatcap.org> - NeoMutt-2019-02-11
+* Sat Nov 02 2019 Richard Russon <rich@flatcap.org> - 2019-1-02-11
 - Bug Fixes
   - Mailboxes command with empty backticks
   - Mbox save-to-trash
@@ -977,7 +977,7 @@ cat %{SOURCE1} >> %{buildroot}%{_sysconfdir}/neomuttrc
   - 100% German
   - 100% Czech 
 
-* Fri Oct 25 2019 Richard Russon <rich@flatcap.org> - NeoMutt-2019-10-25
+* Fri Oct 25 2019 Richard Russon <rich@flatcap.org> - 2019-1-10-25
 - Features
   - Add $fcc_before_send, defaulting unset
   - Deprecate TLS 1.0 and 1.1 by default

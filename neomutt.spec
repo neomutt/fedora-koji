@@ -1,6 +1,6 @@
 Summary: Text mode Mail Client
 Name: neomutt
-Version: 20240416
+Version: 20240425
 Release: 1%{?dist}
 Epoch: 6
 Url: https://neomutt.org/
@@ -78,6 +78,26 @@ cat %{SOURCE1} >> %{buildroot}%{_sysconfdir}/neomuttrc
 %{_datadir}/neomutt
 
 %changelog
+* Thu Apr 25 2024 Richard Russon <rich@flatcap.org> - 20240425-1
+- Bug Fixes
+  - #4263 fix: cache naming
+  - #4261 expando: fix conditional padding
+  - #4261 expando: fix container
+  - #4261 expando: add lower-case operator
+  - #4261 expando: add external filter
+  - imap: add mailboxes more directly
+- Translations
+  - trans: tidy messages
+- Docs
+  - doxy: add missing params
+- Build
+  - #4268 Filter out CFLAGS with paths from the output of '-v'
+  - #4273 guard truecolor functions in tests
+  - #4275 use homebrew in macOS build
+- Code
+  - use Buffer rather than strcat()
+  - ncrypt: use gpgme types consistently
+
 * Tue Apr 16 2024 Richard Russon <rich@flatcap.org> - 20240416-1
 - Features
   - #4216 Compose: Hide MixMaster chain if chain is empty

@@ -1,7 +1,7 @@
 Summary: Text mode Mail Client
 Name: neomutt
 Version: 20240425
-Release: 2%{?dist}
+Release: 3%{?dist}
 Epoch: 6
 Url: https://neomutt.org/
 
@@ -9,7 +9,8 @@ Url: https://neomutt.org/
 # BSD: Autosetup build system, queue.h
 # MIT: Acutest unit test framework, some themes
 # Public Domain: pgpewrap.c, mbox.5, some themes
-License: GPLv2+ and BSD and MIT and Public Domain
+# Automatically converted from old format: GPLv2+ and BSD and MIT and Public Domain - review is highly recommended.
+License: GPL-2.0-or-later AND LicenseRef-Callaway-BSD AND LicenseRef-Callaway-MIT AND LicenseRef-Callaway-Public-Domain
 
 Source: https://github.com/neomutt/neomutt/archive/%{version}/%{name}-%{version}.tar.gz
 Source1: fedora-colors.rc
@@ -78,6 +79,9 @@ cat %{SOURCE1} >> %{buildroot}%{_sysconfdir}/neomuttrc
 %{_datadir}/neomutt
 
 %changelog
+* Mon Sep 02 2024 Miroslav Suchý <msuchy@redhat.com> - 6:20240425-3
+- convert license to SPDX
+
 * Thu Jul 18 2024 Fedora Release Engineering <releng@fedoraproject.org> - 6:20240425-2
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_41_Mass_Rebuild
 

@@ -1,6 +1,6 @@
 Summary: Text mode Mail Client
 Name: neomutt
-Version: 20241002
+Version: 20241114
 Release: 1%{?dist}
 Epoch: 6
 Url: https://neomutt.org/
@@ -9,7 +9,7 @@ Url: https://neomutt.org/
 # BSD: Autosetup build system, queue.h
 # MIT: Acutest unit test framework, some themes
 # Public Domain: pgpewrap.c, mbox.5, some themes
-License: GPLv2+ and BSD and MIT and Public Domain
+License: GPL-2.0-or-later AND LicenseRef-Callaway-BSD AND LicenseRef-Callaway-MIT AND LicenseRef-Callaway-Public-Domain
 
 Source: https://github.com/neomutt/neomutt/archive/%{version}/%{name}-%{version}.tar.gz
 Source1: fedora-colors.rc
@@ -78,6 +78,42 @@ cat %{SOURCE1} >> %{buildroot}%{_sysconfdir}/neomuttrc
 %{_datadir}/neomutt
 
 %changelog
+* Thu Nov 14 2024 Richard Russon <rich@flatcap.org> - 20241114-1
+- Security
+  - Fixed: CVE-2024-49393
+  - Fixed: CVE-2024-49394
+  - #4300 Read the protected Message-ID
+- Features
+  - #4336 Allow toggling numeric configs, e.g. `:toggle pager_index_lines`
+  - #4427 alias: tag/untag pattern
+  - query: tag with `<space>`
+- Contrib
+  - #4400 `mutt_oauth2.py`: Fix reference to `client_secret`
+- Bug Fixes
+  - #4399 fix duplicate save-hook
+  - #4403 expando: fix escaping
+  - #4404 browser: fix enter-quit-enter
+  - #4405 pager: fix repaint
+  - #4407 config: warn about deprecated variables
+  - #4425 Refresh alias/query dialog on alias/query format change
+  - #4433 compose: fix redraw on attachment
+  - #4436 compose: fix search with `arrow_cursor`
+  - #4438 autocrypt: fix `copy_normalize_addr()`
+  - alias: fix cli crash
+  - expando: fix relative dates
+  - expando: padding default to space
+- Translations
+  - 100% German
+  - 100% Turkish
+  - 99% Czech
+  - 99% Slovak
+  - 82% French
+- Docs
+  - drop refs to always-enabled features
+  - fix typo in unmacro
+  - fix broken link
+  - ncrypt: fix typo in `config.c`
+
 * Wed Oct 02 2024 Richard Russon <rich@flatcap.org> - 20241002-1
 - Security
   - #4243 - security: kill unnecessary blank lines
@@ -138,6 +174,12 @@ cat %{SOURCE1} >> %{buildroot}%{_sysconfdir}/neomuttrc
   - #4366 - Fix up slashes in `imap_fix_path()`
   - #4378 - Fix padding with an empty string
   - tidy expando library
+
+* Mon Sep 02 2024 Miroslav Suchý <msuchy@redhat.com> - 6:20240425-3
+- convert license to SPDX
+
+* Thu Jul 18 2024 Fedora Release Engineering <releng@fedoraproject.org> - 6:20240425-2
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_41_Mass_Rebuild
 
 * Thu Apr 25 2024 Richard Russon <rich@flatcap.org> - 20240425-1
 - Bug Fixes

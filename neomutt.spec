@@ -18,6 +18,8 @@ Source1: fedora-colors.rc
 Patch0: neomutt-system_certs.patch
 # Use system ciphers (@SYSTEM)
 Patch1: neomutt-ssl_ciphers.patch
+# Temporary fix for autosetup
+Patch2: neomutt-autosetup.patch
 
 Requires: mailcap
 Recommends: urlview
@@ -45,6 +47,7 @@ messages.
 %setup -q -n %{name}-%{version}
 %patch -P 0 -p1 -b .system_certs
 %patch -P 1 -p1 -b .ssl_ciphers
+%patch -P 2 -p1 -b .autosetup
 
 %build
 %{configure} \
@@ -58,8 +61,6 @@ messages.
 
 # remove unique id in manual.html because multilib conflicts
 sed -i -r 's/<a id="id[a-z0-9]\+">/<a id="id">/g' docs/manual.html
-# temporary build fix for autosetup
-sed -i 's/char \*nl = NULL;/const &/' autosetup/jimsh0.c
 
 %install
 %{make_install}
@@ -903,15 +904,15 @@ cat %{SOURCE1} >> %{buildroot}%{_sysconfdir}/neomuttrc
   - #3572 - fix hostname detection for hostname ending with a "."
   - #3596 - fix truncated SMTP lines in case of very long lines
   - #3600 - use `smime_sign_as` instead of `pgp_sign_as` when signing S/MIME messages
-  - #3697 - set `smime_sign_as` instead of `smime_default_key` when signing 
+  - #3697 - set `smime_sign_as` instead of `smime_default_key` when signing
   - #3609 - fix wrong message being marked as read with `$pager_read_delay = 1`
   - #3653 - fix negative new-mail count on maildir
-  - #3656 - skip zero width non-joiner character in the pager 
+  - #3656 - skip zero width non-joiner character in the pager
   - #3664 - handle text/vcard as not being an attachment, same as for text/x-vcard
   - #3666 - fix `hdr_order` not sorting last header correctly
   - #3673 - make exiting via SIGINT more graceful
   - #3700 - fix `unhook index-format-hook`
-  - #3709 - send: delete signature when sending fails #3709 
+  - #3709 - send: delete signature when sending fails #3709
   - #3727 - SMTP: try all available methods even if SASL is not compiled in
   - #3730 - fix decryption issue when postponing S/MIME encrypted mails
   - avoid unnecessary refreshes
@@ -922,7 +923,7 @@ cat %{SOURCE1} >> %{buildroot}%{_sysconfdir}/neomuttrc
   - #3629 - skip line rest of line after a warning
   - #3670 - `vfolder_format` is now deprecated, use `folder_format`
   - #3702 - rename `connect_timeout` to `socket_timeout`
-  - #3697 - `pgp_entry_format`: add %i expand for the key fingerprint 
+  - #3697 - `pgp_entry_format`: add %i expand for the key fingerprint
   - #3724 - rename `attribution` to `attribution_intro` and
     `post_indent_string` to `attribution_trailer`
   - config variables are now properly spelled with underscores between names,
@@ -1000,7 +1001,7 @@ cat %{SOURCE1} >> %{buildroot}%{_sysconfdir}/neomuttrc
 - Code
   - menu: eliminate custom_redraw()
   - modernise mixmaster
- 
+
 * Fri Apr 15 2022 Richard Russon <rich@flatcap.org> - 20220415-1
 - Security
   - Fix uudecode buffer overflow (CVE-2022-1328)
@@ -1267,9 +1268,9 @@ cat %{SOURCE1} >> %{buildroot}%{_sysconfdir}/neomuttrc
   - 100% Czech
   - 70% Turkish
 - Docs
-  - Document that $sort_alias affects the query menu 
+  - Document that $sort_alias affects the query menu
 - Build
-  - improve ASAN flags 
+  - improve ASAN flags
   - add SASL and S/MIME to --everything
   - fix contrib (un)install
 - Code
@@ -1288,7 +1289,7 @@ cat %{SOURCE1} >> %{buildroot}%{_sysconfdir}/neomuttrc
   - Compose: display user-defined headers
   - Address Book / Query: live sorting
   - Address Book / Query: patterns for searching
-  - Config: Add '+=' and '-=' operators for String Lists 
+  - Config: Add '+=' and '-=' operators for String Lists
   - Config: Add '+=' operator for Strings
   - Allow postfix query ':setenv NAME?' for env vars
 - Bug Fixes
@@ -1755,7 +1756,7 @@ cat %{SOURCE1} >> %{buildroot}%{_sysconfdir}/neomuttrc
 - Translations
   - 100% Lithuanian
   - 100% German
-  - 100% Czech 
+  - 100% Czech
 
 * Fri Oct 25 2019 Richard Russon <rich@flatcap.org> - 2019-1-10-25
 - Features
@@ -1887,7 +1888,7 @@ cat %{SOURCE1} >> %{buildroot}%{_sysconfdir}/neomuttrc
   - Update German: 100%
   - Update Lithuanian: 100%
   - Update Portuguese (Brazil): 100%
-  - Update Slovak: 59% 
+  - Update Slovak: 59%
   - Reduce duplication of messages
 - Code
   - Tidy up the mailbox API
@@ -3175,7 +3176,7 @@ cat %{SOURCE1} >> %{buildroot}%{_sysconfdir}/neomuttrc
   - Keybase portability improvements
     Joshua Jordi (JakkinStewart)
 - Bug Fixes
-  - Fix notmuch crash toggling virtual folders 
+  - Fix notmuch crash toggling virtual folders
   - Fix display of pager index when sidebar toggled
 
 * Sun Aug 21 2016 Richard Russon <rich@flatcap.org> - 20160821-1

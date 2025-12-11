@@ -58,6 +58,8 @@ messages.
 
 # remove unique id in manual.html because multilib conflicts
 sed -i -r 's/<a id="id[a-z0-9]\+">/<a id="id">/g' docs/manual.html
+# temporary build fix for autosetup
+sed -i 's/char \*nl = NULL;/const &/' autosetup/jimsh0.c
 
 %install
 %{make_install}

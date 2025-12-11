@@ -1,4 +1,4 @@
-From 4645eb88e381c69e0c8a8a164f04b61bf4ea2542 Mon Sep 17 00:00:00 2001
+From 3def24834f1411afa1d03cf4b23f54a5327f9418 Mon Sep 17 00:00:00 2001
 From: Richard Russon <rich@flatcap.org>
 Date: Wed, 1 Jun 2016 21:38:43 +0100
 Subject: neomutt-system_certs
@@ -8,10 +8,10 @@ Subject: neomutt-system_certs
  1 file changed, 1 insertion(+), 1 deletion(-)
 
 diff --git a/conn/config.c b/conn/config.c
-index 4627b260c..ef0530e7d 100644
+index 5afcbcb94..8f164b496 100644
 --- a/conn/config.c
 +++ b/conn/config.c
-@@ -110,7 +110,7 @@ static struct ConfigDef ConnVarsSsl[] = {
+@@ -107,7 +107,7 @@ static struct ConfigDef ConnVarsSsl[] = {
   */
  static struct ConfigDef ConnVarsGnutls[] = {
    // clang-format off

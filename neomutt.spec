@@ -18,6 +18,8 @@ Source1: fedora-colors.rc
 Patch0: neomutt-system_certs.patch
 # Use system ciphers (@SYSTEM)
 Patch1: neomutt-ssl_ciphers.patch
+# Temporary fix for autosetup
+Patch2: neomutt-autosetup.patch
 
 Requires: mailcap
 Recommends: urlview
@@ -45,6 +47,7 @@ messages.
 %setup -q -n %{name}-%{version}
 %patch -P 0 -p1 -b .system_certs
 %patch -P 1 -p1 -b .ssl_ciphers
+%patch -P 2 -p1 -b .autosetup
 
 %build
 %{configure} \
